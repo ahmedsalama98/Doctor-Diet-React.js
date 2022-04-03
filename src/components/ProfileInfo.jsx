@@ -12,23 +12,24 @@ import TransgenderIcon from '@mui/icons-material/Transgender';
 import { Link  as RouterLink} from 'react-router-dom';
 import Link from '@mui/material/Link';
 import AdjustIcon from '@mui/icons-material/Adjust';
-import { Box, Button, IconButton, Typography } from '@mui/material';
-import CloudUploadIcon from '@mui/icons-material/CloudUpload';
-export default function ProfileInfo(props) {
+import { Box, Button, Grid, IconButton, Typography } from '@mui/material';
+import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
+import HeightIcon from '@mui/icons-material/Height';
+export default function ProfileInfo({user}) {
 
     const [t, i18n] = useTranslation();
 
-  console.log(props)
+  console.log(user)
   return (
     <>
       {/* front section */}
         <Box sx={{ m:0, display: 'flex',flexDirection:'column' , alignItems: 'center',bgcolor:'error.main',py:1, justifyContent:'center',}} >
         
         
-        <Avatar component={RouterLink} to={'/profile/edit-image'} alt={props.user.name} src={props.user.avatar_url} sx={{ width: '200px', height: '200px', my: 2 }} />
+        <Avatar component={RouterLink} to={'/profile/edit-image'} alt={user.name} src={user.avatar_url} sx={{ width: '200px', height: '200px', my: 2 }} />
 
 
-              <Typography variant="h2" fontSize={30} component={'h2'} sx={{ textTransform:'capitalize' }}> {props.user.name} </Typography>     
+              <Typography variant="h2" fontSize={30} component={'h2'} sx={{ textTransform:'capitalize' }}> {user.name} </Typography>     
         
       
       
@@ -36,78 +37,140 @@ export default function ProfileInfo(props) {
    {/* front section */}
 
 
-        <Box sx={{ display: 'flex', alignItems: 'center' }} >
+        <Box sx={{ display: 'flex', alignItems: 'center'}} >
         <List
                   sx={{
                     width: '100%',
                     // maxWidth: 360,
                   bgcolor: 'background.paper',
-                    margin:'auto'
+            margin: 'auto',
+            py: 4,
+                    px:2
                   }}
-                >
-                              <ListItem>
+        >
+          
+          <Grid container spacing={2}  >
+
+            
+            <Grid item xs={12} sm={12} md={6} lg={4} >
+                             <ListItem >
                                 <ListItemAvatar>
-                                  <Avatar>
+                                  <Avatar sx={{ bgcolor:'primary.main' }}>
                                     <AlternateEmailIcon />
                                   </Avatar>
                                   
                                 </ListItemAvatar>
-                                <ListItemText primary={t('EMAIL')} secondary={props.user.email} />
+                                <ListItemText primary={t('EMAIL')} secondary={user.email} />
                                 
                               </ListItem>
-                                <Divider variant="inset" component="li" />
-            
+            </Grid>
 
 
-                              <ListItem>
+                    
+            <Grid item xs={12} sm={12} md={6} lg={4} >
+
+            <ListItem>
                                 <ListItemAvatar>
-                                  <Avatar>
+                                  <Avatar sx={{ bgcolor:'primary.main' }}>
                                     <CelebrationIcon />
                                   </Avatar>
                                 </ListItemAvatar>
-                                <ListItemText primary={t('BIRTH_DATE')} secondary={props.user.birth_date}  />
+                                <ListItemText primary={t('BIRTH_DATE')} secondary={user.birth_date}  />
                               </ListItem>
-                              <Divider variant="inset" component="li" />
-            
+            </Grid>
 
-          
-                              <ListItem>
+
+
+                    
+            <Grid item xs={12} sm={12} md={6} lg={4}>
+
+                 
+            <ListItem>
                                 <ListItemAvatar>
-                                  <Avatar>
+                                  <Avatar sx={{ bgcolor:'primary.main' }}>
                                     <AdjustIcon />
                                   </Avatar>
                                 </ListItemAvatar>
-                                <ListItemText primary={t('DAILY_USE_CALORIES_TARGET')} secondary={props.user.daily_use_target + ' ' + t('CALORIES')} />
+                                <ListItemText primary={t('DAILY_USE_CALORIES_TARGET')} secondary={user.daily_use_target + ' ' + t('CALORIES')} />
                                </ListItem>
+            </Grid>
 
-                              <ListItem>
+
+                    
+            <Grid item xs={12} sm={12} md={6} lg={4}>
+
+              
+              
+            <ListItem>
                                 <ListItemAvatar>
-                                  <Avatar>
+                                  <Avatar sx={{ bgcolor:'primary.main' }} >
                                     <TransgenderIcon />
                                   </Avatar>
                                 </ListItemAvatar>
-                                <ListItemText primary={t('GENDER')} secondary={props.user.gender== 0 ? t('MALE'):t('FEMALE')} />
+                                <ListItemText primary={t('GENDER')} secondary={user.gender== 0 ? t('MALE'):t('FEMALE')} />
                                </ListItem>
+            </Grid>
 
-          
+            
+            <Grid item xs={12} sm={12} md={6} lg={4}>
 
-            <Box sx={{ display:'flex',flexWrap:'wrap' , justifyContent:'space-between' , p:2}}>
               
-                <Link  to={'/profile/edit-info'} variant="body2" component={RouterLink }>
-                {t('EDIT_PROFILE_INFO')}
-               
-              </Link>
               
-              <Link  to={'/profile/daily-using'} variant="body2" component={RouterLink }>
-                {t('YOUR_DAILY_MEALS')}
-                </Link>
-              
+            <ListItem>
+                                <ListItemAvatar>
+                                  <Avatar sx={{ bgcolor:'primary.main' }} >
+                                    <HeightIcon />
+                                  </Avatar>
+                                </ListItemAvatar>
+                                <ListItemText primary={t('HEIGHT')}   secondary={user.height +' '+ t('CM')}   />
+                               </ListItem>
+            </Grid>
 
-              </Box>
-                </List>
-  
+            
+             <Grid item xs={12} sm={12} md={6} lg={4}>
+
+              
+              
+            <ListItem>
+                                <ListItemAvatar>
+                                  <Avatar sx={{ bgcolor:'primary.main' }} >
+                                    <FitnessCenterIcon />
+                                  </Avatar>
+                                </ListItemAvatar>
+                                <ListItemText primary={t('WEIGHT')}   secondary={user.fitness.lastWeight.weight +' '+ t('KG')}   />
+                               </ListItem>
+            </Grid>
+
+            
+
+
+
+      
+          </Grid>
+ 
+            
+
+
+                  
+      
+        </List>
         
-        </Box>
+
+        
+      </Box>
+      
+      {/* <Box sx={{ display:'flex',flexWrap:'wrap' , justifyContent:'center' , p:2}}>
+              
+              <Link  to={'/profile/edit-info'} variant="body2" component={RouterLink }>
+              {t('EDIT_PROFILE_INFO')}
+             
+            </Link>
+            
+            <Link  to={'/profile/daily-meals'} variant="body2" component={RouterLink }>
+              {t('YOUR_DAILY_MEALS')}
+              </Link>
+            
+      </Box> */}
       </>
   )
 }

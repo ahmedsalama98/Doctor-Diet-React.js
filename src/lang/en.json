@@ -7,8 +7,13 @@
                             {"pageName":"About-Us","PageRoute":"/about-us"}
 
                     ],
-    "APP_USER_MENU_AUTH":[  {"pageName":"Profile","PageRoute":"/profile"},
-                            {"pageName":"daily meals","PageRoute":"/profile/daily-using" },
+    "APP_USER_MENU_AUTH":[  {"pageName":"Profile","PageRoute":"/profile/info"},
+                            {"pageName":"daily meals","PageRoute":"/profile/daily-meals" },
+                            {"pageName":"Your Weight","PageRoute":"/profile/weight" },
+                            {"pageName":"Edit Your Information","PageRoute":"/profile/edit-info" },
+                            {"pageName":"daily meals","PageRoute":"/profile/daily-meals" },
+
+
                             {"pageName":"LogOut","PageRoute":"/logout" }
                         ],
     "APP_USER_MENU_Guest":[ {"pageName":"Login","PageRoute":"/login"},
@@ -132,6 +137,11 @@
     "MEAL_TYPE":"Meal Type",
     "TOTAL_CALORIES_IS":"Total Calories Is {{attribute}} ",
     "DAILY_USE_CALORIES_TARGET_PROGRESS":"You Using Today {{use}} from {{from}} Calories",
+    "TODAY_MEALS":"Today Meals",
+    "MEAL_CALORIES":"Meal Calories",
+    "MEAL_FOODS":"Meal Foods",
+    "CM":"Centimeter",
+
 
 
 
@@ -191,8 +201,8 @@
         "DELETE_CONFIRMATION":"Are You Sure Delete It ?",
         "DELETE_CONFIRMATION_ATTR":"Are You Sure  You Want Delete {{ attribute }} ?",
         "SOMETHING_WRONG":"SomeThing Wrong",
-        "ARE_YOU_SURE_DELETE_IT":"Are You Sure You Want to Delete It",
-        "ARE_YOU_SURE_DELETE_ATTRIBUTE":"Are You Sure You Want to Delete {{attribute}}", 
+        "ARE_YOU_SURE_DELETE_IT":"Are You Sure You Want to Delete It ?",
+        "ARE_YOU_SURE_DELETE_ATTRIBUTE":"Are You Sure You Want to Delete {{attribute}} ?", 
         "ADD_NEW_ATTRIBUTE" :"Add New  {{attribute}}",
         "NO_RESULTS_FOUND":"No results found",
         "ERROR_EMPTY_MEAL_ITEMS":"Meal Items Is Required",

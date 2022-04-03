@@ -34,6 +34,7 @@ import { toast } from 'react-toastify';
 import { getMealCategories, setNewUserMeal } from '../services/MealsServices';
 
 import LinearProgress from '@mui/material/LinearProgress';
+import { AppAuthContext } from '../AppAuthContext';
 
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -54,21 +55,13 @@ export default function AddMeal(props) {
     const [mealCategories, setMealCategories] = useState([]);
     const [mealCategory, setMealCategory] = useState(0);
     const [isSubmit, setIsSubmit] = useState(false);
-    const AppAuth = props.AppAuth;
-    const setAppAuth = props.setAppAuth;
+    const { AppAuth, setAppAuth } = useContext(AppAuthContext);
+
     const USER = AppAuth.user;
 
 
-    useEffect(() => {
-        
-        let target = USER.daily_use_target;
-        let using = USER.using_today;
-
-        let percentage = ((using + parseFloat(totalMealCalories)) / target) * 100;
-        setProgress(percentage.toFixed(2))
-
-    },[totalMealCalories])
-
+  
+ 
 
 
 
@@ -134,16 +127,31 @@ export default function AddMeal(props) {
 
     useEffect(() => {
         getCategories()
+  
     },[])
-    useEffect(() => {
+
+
+    const handleUpdateProgress = () => {
         
-        if (mealItems.length > 0) {
             let total = 0;
             mealItems.forEach(item =>  total += parseFloat(item.total_calories))
             setTotalMealCalories(total.toFixed(2))
+        
+    }
+    useEffect(() => {
+        
+        handleUpdateProgress()
+    }, [mealItems])
     
-        }
-    },[mealItems])
+    useEffect(() => {
+        
+        let target = USER.daily_use_target;
+        let using = USER.using_today;
+
+        let percentage = ((using + parseFloat(totalMealCalories)) / target) * 100;
+        setProgress(percentage.toFixed(2))
+
+    }, [totalMealCalories])
     const handleChangeQuantity = (event, id) => {
         let quantity = event.currentTarget.value;
         if (quantity < 1) {
@@ -162,6 +170,7 @@ export default function AddMeal(props) {
         let items = [...mealItems];
         items.splice(id, 1);
         setMealItems([...items])
+        handleUpdateProgress()
     }
   
     const checkErrors = () => {
@@ -201,10 +210,7 @@ export default function AddMeal(props) {
 
             setAppAuth({ Auth: true, user: data.data.user })
             setOpenAddMeal(false)
-            toast.success(t('MESSAGES.SAVED_SUCCESSFULLY', { attribute: t('MEAL') }))
-
-
-           
+            toast.success(t('MESSAGES.SAVED_SUCCESSFULLY', { attribute: t('MEAL') })) 
         }catch (error) {
         console.log(error.response.data)
 

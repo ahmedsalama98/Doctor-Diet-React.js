@@ -39,8 +39,8 @@
     "CUP":"كوب",
     "GRAMS":"جرامات",
     "GRAM":"غرام",
-    "GM":"GM",
-    "G":"g",
+    "GM":"جرام",
+    "G":"جرام",
     "PER_100_GRAM":"لكل 100 غرام",
     "PER_GRAM":"للغرام الواحد",
     "PER_ONE":"لكل واحدة",
@@ -131,7 +131,10 @@
     "MEAL_TYPE":"نوع الوجبه",
     "TOTAL_CALORIES_IS":"اجمالي السعرات الحراريه {{attribute}} ",
     "DAILY_USE_CALORIES_TARGET_PROGRESS":"انت استخدمت اليوم {{use}} من {{from}} سعر حراري",
-
+    "TODAY_MEALS":"وجبات اليوم",
+    "MEAL_CALORIES":"سعرات الوجبه",
+    "MEAL_FOODS":"طعام الوجبه",
+    "CM":"سنتمتر",
 
 
 
