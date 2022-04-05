@@ -92,13 +92,10 @@ export default function Profile() {
             
 
             <TabPanel value={'weight'} sx={{ padding: 0 }}>
-              
+     
 
               <UserWeightHistory />
             </TabPanel>
-            
-
-
 
             <TabPanel value={'daily-meals'}>
             <UserMeals USER ={USER} />

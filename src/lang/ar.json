@@ -7,9 +7,13 @@
                             {"pageName":"معلومات عنا","PageRoute":"/about-us"}
 
                     ],
-    "APP_USER_MENU_AUTH":[  {"pageName":"الملف الشخصي","PageRoute":"/profile"},
-                            {"pageName":"الوجبات اليوميه","PageRoute":"/profile/daily-using" },
-                            {"pageName":"تسجيل خروج","PageRoute":"/logout" }
+    "APP_USER_MENU_AUTH":[ {"pageName":"ملفك الشخصي","PageRoute":"/profile/info"},
+                            {"pageName":"وجباتك اليوميه","PageRoute":"/profile/daily-meals" },
+                            {"pageName":"وزنك","PageRoute":"/profile/weight" },
+                            {"pageName":"تعديل بياناتك","PageRoute":"/profile/edit-info" },
+                            {"pageName":"تغيير صورتك","PageRoute":"/profile/edit-image" },
+                            {"pageName":"تغيير رقمك السري","PageRoute":"/profile/edit-password" },
+                            {"pageName":"تسجيل الخروج","PageRoute":"/logout" }
                         ],
     "APP_USER_MENU_Guest":[ {"pageName":"تسجيل الدخول","PageRoute":"/login"},
                             {"pageName":"التسجيل","PageRoute":"/signup" }
@@ -43,6 +47,7 @@
     "G":"جرام",
     "PER_100_GRAM":"لكل 100 غرام",
     "PER_GRAM":"للغرام الواحد",
+    "PER_GM":"لكل 100 جرام",
     "PER_ONE":"لكل واحدة",
     "PER_CUP":"لكل كوب",
     "NUMBERS":"أعداد",
@@ -135,11 +140,11 @@
     "MEAL_CALORIES":"سعرات الوجبه",
     "MEAL_FOODS":"طعام الوجبه",
     "CM":"سنتمتر",
-
-
-
-
-
+    "ALL":"الكل",
+    "MORE_THAN":"اكثر من ",
+    "MORE_THAN_ATT":"اكثر من {{attribute}}",
+    "SHOW_DETAILS":"اظهار التفاصيل",
+    "NOT_FOUND":"غير موجود",
 
 
     "VALIDATION":{

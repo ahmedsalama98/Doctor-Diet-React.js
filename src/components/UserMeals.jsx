@@ -170,6 +170,10 @@ const handleOpenDeleteMeal = (id) => {
           
         <Typography component={'p'}  sx={{ display:'flex' ,justifyContent:'center'}}>
           {checkTodayMeals ===false &&  <CircularProgress></CircularProgress>}
+          </Typography>
+          
+          <Typography component={'p'}  sx={{ display:'flex' ,justifyContent:'center'}}>
+          {todayMeals.length < 1  &&  checkTodayMeals ===true  && t('EMPTY')}
         </Typography>
       <Box display={'flex'} justifyContent={'center'}>
 <Grid  container  spacing={2}   width={'100%'} j>
@@ -240,7 +244,11 @@ const handleOpenDeleteMeal = (id) => {
            <Typography sx={{ py:1 }}>{key}</Typography>
          </AccordionSummary>
          <AccordionDetails>
-           
+
+         
+         <Typography component={'p'}  sx={{ display:'flex' ,justifyContent:'center'}}>
+          {lastMonthMeals[key].length < 1  &&  t('EMPTY')}
+        </Typography>
        <Box display={'flex'} justifyContent={'center'}>
  <Grid  container  spacing={2}   width={'100%'} j>
            

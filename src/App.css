@@ -1,3 +1,8 @@
  body.dir_rtl{
   direction: rtl !important;
 }
+
+
+.MuiPagination-ul .css-wjh20t-MuiPagination-ul{
+  justify-content: center;
+}

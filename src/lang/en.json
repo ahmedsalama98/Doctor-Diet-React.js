@@ -11,9 +11,8 @@
                             {"pageName":"daily meals","PageRoute":"/profile/daily-meals" },
                             {"pageName":"Your Weight","PageRoute":"/profile/weight" },
                             {"pageName":"Edit Your Information","PageRoute":"/profile/edit-info" },
-                            {"pageName":"daily meals","PageRoute":"/profile/daily-meals" },
-
-
+                            {"pageName":"Change Your Image","PageRoute":"/profile/edit-image" },
+                            {"pageName":"Change Your Password","PageRoute":"/profile/edit-password" },
                             {"pageName":"LogOut","PageRoute":"/logout" }
                         ],
     "APP_USER_MENU_Guest":[ {"pageName":"Login","PageRoute":"/login"},
@@ -44,11 +43,12 @@
     "CUP":"Cup",
     "GRAMS":"Grams",
     "GRAM":"Gram",
-    "GM":"GM",
+    "GM":"Gram",
     "G":"g",
     "PER GRAM":"Per Gram",
     "PER_100_GRAM":"Per 100 Gram",
     "PER_GRAM":"Per Gram",
+    "PER_GM":"Per 100 Gram",
     "PER_ONE":"Per ONE",
     "PER_CUP":"Per Cup",
     "NUMBERS":"Numbers",
@@ -141,6 +141,12 @@
     "MEAL_CALORIES":"Meal Calories",
     "MEAL_FOODS":"Meal Foods",
     "CM":"Centimeter",
+    "ALL":"All",
+    "MORE_THAN":"More Than",
+    "MORE_THAN_ATT":"More Than {{attribute}} ",
+    "SHOW_DETAILS":"Show Details",
+    "NOT_FOUND":"Not Found",
+
 
 
 

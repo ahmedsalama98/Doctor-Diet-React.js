@@ -17,6 +17,7 @@ import GuestMiddleware from './middleware/GuestMiddleware';
 import AuthMiddleware from './middleware/AuthMiddleware';
 import Profile from './Pages/Profile';
 import Footer from './components/Footer';
+import FoodItem from './Pages/FoodItem';
 
 
 
@@ -44,11 +45,12 @@ console.log(AppSettings)
   return (
     <ThemeProvider theme={theme}>
       <Header />
-      <Paper  sx={{ minHeight: '90vh' , m:0,P:0}} dir={AppSettings.lang ==='ar'?'rtl':'ltr'}>
+      <Paper  sx={{ minHeight: '90vh' , m:0,P:0 , bgcolor:'primary.main', borderRadius:0}} dir={AppSettings.lang ==='ar'?'rtl':'ltr'}>
       
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/food" element={<Food />} />
+          <Route path="/food/:id" element={<FoodItem />} />
           <Route path="/login" element={ <GuestMiddleware> <Login /></GuestMiddleware>} />
           <Route path="/signup" element={ <GuestMiddleware> <SignUp /> </GuestMiddleware>} />
           <Route path="/profile/" element={<AuthMiddleware><Profile /></AuthMiddleware>} />

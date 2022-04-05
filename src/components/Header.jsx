@@ -20,6 +20,7 @@ import { useTranslation } from 'react-i18next';
 import { AuthLogout } from '../services/AuthServices';
 import { deleteCurrentAuthToken } from '../services/TokenServices';
 import { AppAuthContext } from '../AppAuthContext';
+import { Divider } from '@mui/material';
 
 
 const Header = () => {
@@ -349,8 +350,9 @@ const Header = () => {
             onClose={handleCloseUserMenu}
           >
             {settings.map((setting ,id) => (
-              <MenuItem key={id} onClick={()=> handleCloseUserMenuAndNavigate(setting.PageRoute)}>
-                <Typography textAlign="center">{setting.pageName}</Typography>
+              <MenuItem  key={id} onClick={()=> handleCloseUserMenuAndNavigate(setting.PageRoute)}>
+                <Typography sx={{ textAlign: 'center', margin: 'auto'}} >{setting.pageName}</Typography>
+             
               </MenuItem>
             ))}
           </Menu>
