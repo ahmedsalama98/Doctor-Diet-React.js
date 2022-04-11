@@ -158,7 +158,7 @@ const Header = () => {
             
           >
         
-            <Avatar variant="square" src='logo.png'></Avatar>
+            <Avatar variant="square" src='/logo.png'></Avatar>
             <Typography sx={{  width:'90px '  }} fontFamily={'Caveat ,cursive'}  fontSize={16} fontWeight={1000}  component='span'>
             {AppName}
             </Typography>
@@ -207,7 +207,12 @@ const Header = () => {
               </MenuItem>
             ))
           
-            : ''}
+            : 
+            <MenuItem className='active'  onClick={()=> handleNavigateToRoute('/profile')}>
+            <Typography textAlign="center"> {t('PROFILE')}</Typography>
+          </MenuItem>
+            
+            }
             </Menu>
           </Box>
 
@@ -220,7 +225,7 @@ const Header = () => {
           >
 
    
-            <Avatar variant="square" src='logo.png'></Avatar>
+            <Avatar variant="square" src='/logo.png'></Avatar>
             <Typography sx={{  width:'60px '  }} fontFamily={'Caveat ,cursive'}  fontSize={16} fontWeight={1000}  component='span'>
               {AppName}
             </Typography>
@@ -259,7 +264,18 @@ const Header = () => {
                 {page.pageName}
               </Button>
             ))
-            : ''}
+            : 
+            <Button
+            onClick={()=> handleNavigateToRoute('/profile')}
+                sx={{ my: 2, display: 'block' , justifyContent:'end'}}
+          
+            color='primary'
+            variant={pathname.startsWith('/profile')  ?'outlined':''}
+          >
+           {t('PROFILE')}
+          </Button>
+        
+            }
           </Box>
 
         
@@ -328,7 +344,7 @@ const Header = () => {
         
           <Tooltip title="Open settings">
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-              <Avatar sx={{ bgcolor: 'success'}} alt={AppAuth.user.name} src="/static/images/avatar/2.jpg" />
+              <Avatar sx={{ bgcolor: 'success'}}  alt={ AppAuth.Auth ===true  ?AppAuth.user.name :'U'} src={AppAuth.Auth ===true ? AppAuth.user.avatar_url :''} />
             </IconButton>
           </Tooltip>
 

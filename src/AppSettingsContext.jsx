@@ -1,7 +1,6 @@
 import React, { useState,useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { getSettingFromLocalStorage, SaveSettingsToLocalStorage } from "./services/SettingsServices";
-
 export const  AppSettingsContext = React.createContext({});
 
 const AppSettingProvider = (props) => {
@@ -14,9 +13,15 @@ const AppSettingProvider = (props) => {
         setAppSettings({...AppSettings,mode})
     }
     const setAppLang = (lang) => {
+        document.body.dir =lang === 'ar' ? 'rtl' : 'ltr';
+
         setAppSettings({ ...AppSettings, lang })
         SaveSettingsToLocalStorage(AppSettings);
         i18n.changeLanguage(lang);
+
+        window.location.reload();
+
+        
     }
 
     

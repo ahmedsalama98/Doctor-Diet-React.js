@@ -128,15 +128,15 @@ export default function SignUp() {
      setIsSubmit(false)
      toast.error(t('MESSAGES.SOMETHING_WRONG'));
      setErrors({ ...error.response.data.errors })
-     console.log(error.response.data.errors)
+     console.log(error.response.data)
    }
 
 
   }
   return (
 
-    <Paper sx={{  bgcolor:'primary.main',pb:3}}>
-      <Container component="main" maxWidth="md" sx={{bgcolor: 'background.paper',pb:2}}>
+    <Paper sx={{ pb:3}}>
+      <Container component="main" maxWidth="md" sx={{ boxShadow:5,pb:2 }}>
         <Box
           sx={{
             display: 'flex',

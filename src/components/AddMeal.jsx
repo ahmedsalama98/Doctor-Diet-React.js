@@ -32,7 +32,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { toast } from 'react-toastify';
 import { getMealCategories, setNewUserMeal } from '../services/MealsServices';
-
+import { getFoodCategories } from '../services/FoodServices';
 import LinearProgress from '@mui/material/LinearProgress';
 import { AppAuthContext } from '../AppAuthContext';
 
@@ -56,15 +56,36 @@ export default function AddMeal(props) {
     const [mealCategory, setMealCategory] = useState(0);
     const [isSubmit, setIsSubmit] = useState(false);
     const { AppAuth, setAppAuth } = useContext(AppAuthContext);
+    const [foodCategories, setFoodCategories] = useState([]);
+
 
     const USER = AppAuth.user;
+    const [foodFilters, setFoodFilters] = useState({
+        search: '' ,
+        category_id:0 ,
+        calories: 0,  
+    });
+    
+    const calories = [
+        20, 30,40,50, 60,70,80,90,100,150,200,250,300,350,400,500,
+    ];
+    
 
-
+      const getCategoriesFood = async () => {
+    
+        try {
+          let { data } = await getFoodCategories();
+          
+        
+          setFoodCategories([...data.data.categories])
+          
+        } catch (error) {
+          
+          console.log(error.response.data)
+        }
+      }
+    
   
- 
-
-
-
 
 
     const handleClickOpen = () => {
@@ -74,13 +95,26 @@ export default function AddMeal(props) {
         setOpenAddMeal(false);
     };
 
-    const handleSearch = async (event) => {
-        let search = event.currentTarget.value; 
+    const handleFoodSearch = (event) => {
+    
+        let newSearchFilter ={...foodFilters , [event.target.name ]:event.target.value} 
+        setFoodFilters(newSearchFilter)
+        console.log(newSearchFilter)
+    
+      }
+    
+    
+    const getSearchQuery = () => {
+        let query = `?search=${foodFilters.search}&category_id=${foodFilters.category_id}&calories=${foodFilters.calories}`
+        return query;
+    }
+    const handleSearch = async () => {
+      
         setOpenSearchMenu(true)
         setSearchChecking(false)
-        console.log(search)
+        console.log(getSearchQuery())
         try {
-            let  { data } = await foodSearchForAddNewMeal(search);
+            let  { data } = await foodSearchForAddNewMeal(getSearchQuery());
    
 
             setSearchItems([...data.data.foods])
@@ -95,11 +129,13 @@ export default function AddMeal(props) {
         setSearchChecking(true)
     }
 
+    useEffect(() => {
+        handleSearch()
+    },[foodFilters])
     const addMealItemToCart = (item) => {
         let isExitsInMealItem = mealItems.some(el => el.id === item.id);
         if (!isExitsInMealItem) {
             item.quantity = item.unit === 'GM' ? 100 : 1;
-            item.unit = t(item.unit);
             let total_calories =item.unit === 'GM' ? (item.quantity / 100) * item.calories : item.quantity * item.calories;
             item.total_calories = total_calories.toFixed(2);
 
@@ -127,6 +163,7 @@ export default function AddMeal(props) {
 
     useEffect(() => {
         getCategories()
+        getCategoriesFood()
   
     },[])
 
@@ -265,20 +302,74 @@ export default function AddMeal(props) {
                                               <Grid item xs={12} sm={12} md={4}>
 
                                                   {/* search box */}
-                          <Box onSubmit={(e) => e.preventDefault()} component={'form'} sx={{borderRadius:1 , py: 3, boxShadow:1, minHeight:'110px', display:'flex' ,alignItems:'center' , flexDirection:'column'}}>
+                          <Box onSubmit={(e) => e.preventDefault()} component={'form'} sx={{borderRadius:1 , py: 3 ,px:1.5, boxShadow:1, minHeight:'110px', display:'flex' ,alignItems:'center' , flexDirection:'column'}}>
+                        
+                                                    <FormControl fullWidth >
+                                        <InputLabel id="demo-simple-select-label">{t('CATEGORY')}</InputLabel>
+                                  <Select
+                                  sx={{ mb:1.5 }} 
+                                    
+                                            labelId="demo-simple-select-label"
+                                            id="search_category"
+                                            name='category_id'
+                                            value={foodFilters.category_id}
+                                            label={t('CATEGORY')}
+                                            onChange={handleFoodSearch}
+                                        >
 
+                                            <MenuItem value={0}  >{t('ALL')}</MenuItem>
+                                
+                                            
+                                        
+                                            {
+                                            foodCategories.map((category, id) =>   
+                                                <MenuItem value={category.id} key={id}>{category.name}</MenuItem>
+                                                
+                                            )
+                                            }
+                                        </Select>
+                                        </FormControl>
+                        
+                              <FormControl fullWidth >
+                                                                <InputLabel id="demo-simple-select-label">{ t('CALORIES')}</InputLabel>
+                                  <Select
+                                                                        sx={{ mb:1.5 }} 
+
+                                                                labelId="demo-simple-select-label"
+                                                                    id="demo-simple-select"
+                                                                    onChange={handleFoodSearch}
+                                                                    name='calories'
+                                                                value={foodFilters.calories}
+                                                                label={ t('CALORIES')}
+                                                                >
+                                                                    <MenuItem selected  value={0} >{t('ALL')}</MenuItem>
+
+                                                                    {
+                                                                    calories.map((cal, id) =>   
+                                                                        <MenuItem value={cal} key={id}>{ t('MORE_THAN_ATT' , {attribute:cal})  }</MenuItem>
+                                                                        
+                                                                    )
+                                                                    }
+                                                                
+                                                        
+
+                                                            </Select>
+                                                            </FormControl>
                                                           
+                              
+
                                                               <TextField
                                                                   fullWidth
-                                                                  sx={{ maxWidth:"330px" }}
+                                                                 
+                                                                  value={foodFilters.search}
                                                                   autoFocus
                                                                   id="search"
                                                                   name='search'
                                                                   label={t('SEARCH')}
                                                                   type="text"
                                                                   variant="outlined"
-                                                                      onChange={handleSearch}
-                                                              />
+                                                                  onChange={handleFoodSearch}
+                                                                  />
 
 
 
@@ -412,7 +503,7 @@ export default function AddMeal(props) {
                                                                           value={row.quantity}
                                                                           onChange={ (event)=>handleChangeQuantity( event,id)}
                                                                       InputProps={{
-                                                                          startAdornment: <InputAdornment position="start">{ row.unit}</InputAdornment>,
+                                                                          startAdornment: <InputAdornment position="start">{t( row.unit)}</InputAdornment>,
                                                                           }}
                                                                           
                                                                       />

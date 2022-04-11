@@ -162,7 +162,6 @@ export default function EditInf() {
           label={t('EMAIL')}
           name="email"
           autoComplete="email"
-          autoFocus
           value={formik.values.email}
           onChange={formik.handleChange}
           error={formik.touched.email && Boolean(formik.errors.email)}

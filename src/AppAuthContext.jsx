@@ -18,7 +18,7 @@ const AppAuthContextProvider = (props) => {
         
         return (
             <Box sx={{ bgcolor: 'text.secondary', height:'100vh'  , width:'100%', display:'flex', alignItems:'center' , justifyContent:'center' , flexDirection:'column'}}>
-        <Avatar sx={{ width:"100px", height:"100px",}} variant="square" src='logo.png'></Avatar>
+        <Avatar sx={{ width:"100px", height:"100px",}} variant="square" src='/logo.png'></Avatar>
             <Typography fontFamily={'Caveat ,cursive'}  fontSize={40} fontWeight={1000}  component='span'>
             Doctor-Diet
             </Typography>

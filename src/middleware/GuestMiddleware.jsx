@@ -9,8 +9,8 @@ const GuestMiddleware = ({children}) => {
     const { AppAuth  } = useContext(AppAuthContext);
     
     if (AppAuth.Auth === true) {
-       
-        return <Navigate to={'/'} replace={true }/>
+    
+        return <Navigate to={'/'} />
     }
     return children;
   

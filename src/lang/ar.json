@@ -2,10 +2,7 @@
     "WELCOME": "مرحبا",
     "APP_MAIN_PAGES":[      {"pageName":"الرئيسبة","PageRoute":"/"},
                             {"pageName":"طعام","PageRoute":"/food"},
-                            {"pageName":"وجبات","PageRoute":"/meals"},
-                            {"pageName":"اتصل بنا","PageRoute":"/contact-us"},
-                            {"pageName":"معلومات عنا","PageRoute":"/about-us"}
-
+                            {"pageName":"اتصل بنا","PageRoute":"/contact-us"}
                     ],
     "APP_USER_MENU_AUTH":[ {"pageName":"ملفك الشخصي","PageRoute":"/profile/info"},
                             {"pageName":"وجباتك اليوميه","PageRoute":"/profile/daily-meals" },
@@ -145,6 +142,16 @@
     "MORE_THAN_ATT":"اكثر من {{attribute}}",
     "SHOW_DETAILS":"اظهار التفاصيل",
     "NOT_FOUND":"غير موجود",
+    "JOIN_US":"انضم إلينا",
+    "FOOD_SEARCH":"البحث عن طعام",
+    "FOOD_Categories":"اصناف الطعام",
+    "CONTACT_US":"اتصل بنا",
+    "MESSAGE":"الرساله",
+    "SUBJECT":"الموضوع",
+    "MOBILE":"الموبيل",
+    "SEND":"ارسال",
+
+
 
 
     "VALIDATION":{
@@ -209,7 +216,9 @@
         "ADD_NEW_ATTRIBUTE" :"اضافة {{attribute}}",
         "NO_RESULTS_FOUND":"لم يتم العثور على نتائج",
         "ERROR_EMPTY_MEAL_ITEMS":"عناصر الوجبه مطلوبه",
-        "ERROR_MEAL_TYPE":"نوع الوجبه مطلوب"
+        "ERROR_MEAL_TYPE":"نوع الوجبه مطلوب",
+        "WELCOME_AUTH":"مرحبًا  {{name}}  ، نتمنى لك يومًا سعيدًا ",
+        "WELCOME_GUEST":"مرحبًا ، نتمنى لك يومًا سعيدًا وان نساعدك في ما تبحث"
 
 
     }

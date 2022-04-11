@@ -18,6 +18,7 @@ import AuthMiddleware from './middleware/AuthMiddleware';
 import Profile from './Pages/Profile';
 import Footer from './components/Footer';
 import FoodItem from './Pages/FoodItem';
+import ContactUs from './Pages/ContactUs';
 
 
 
@@ -25,17 +26,24 @@ import FoodItem from './Pages/FoodItem';
 
 function App() {
 
-  const {AppSettings} = useContext(AppSettingsContext);
+
+
+
+
+  const { AppSettings } = useContext(AppSettingsContext);
+  const left = AppSettings.lang === 'en' ? 'left' : 'right';
+  const right = AppSettings.lang === 'en' ? 'right' : 'left';
+  const direction = AppSettings.lang === 'ar' ? 'rtl' : 'ltr';
   const theme = createTheme({
+    direction,
+    
+    left,
+    right,
     palette: {
       mode: AppSettings.mode,
-      direction: AppSettings.lang ==='ar'?'rtl':'ltr'
-   
-    , 
     },
   })
-  document.body.dir = AppSettings.lang === 'ar' ? 'rtl' : 'ltr';
-console.log(AppSettings)
+console.log(theme)
   useEffect(() => {
 
   //   // AuthTokenInterceptor(AppSettings.lang);
@@ -45,7 +53,11 @@ console.log(AppSettings)
   return (
     <ThemeProvider theme={theme}>
       <Header />
-      <Paper  sx={{ minHeight: '90vh' , m:0,P:0 , bgcolor:'primary.main', borderRadius:0}} dir={AppSettings.lang ==='ar'?'rtl':'ltr'}>
+      <div id="top"></div>
+      <Paper  sx={{ minHeight: '90vh' , m:0,P:0 , bgcolor:AppSettings.mode =='dark' ?'grey.900':'grey.200', borderRadius:0,
+    background:'url(/background-1.jpg) fixed center center',
+    backgroundSize:'cover',
+    }} dir={AppSettings.lang ==='ar'?'rtl':'ltr'}>
       
         <Routes>
           <Route path="/" element={<Home />} />
@@ -53,8 +65,12 @@ console.log(AppSettings)
           <Route path="/food/:id" element={<FoodItem />} />
           <Route path="/login" element={ <GuestMiddleware> <Login /></GuestMiddleware>} />
           <Route path="/signup" element={ <GuestMiddleware> <SignUp /> </GuestMiddleware>} />
+          <Route path="/contact-us" element={<ContactUs />} />
+
+          
           <Route path="/profile/" element={<AuthMiddleware><Profile /></AuthMiddleware>} />
-          <Route path="/profile/:action" element={ <AuthMiddleware><Profile /></AuthMiddleware>} />
+
+          <Route path="/profile/:action/" element={ <AuthMiddleware><Profile /></AuthMiddleware>} />
 
       </Routes>
       </Paper>

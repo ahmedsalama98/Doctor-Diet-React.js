@@ -18,6 +18,10 @@ import Pagination from '@mui/material/Pagination';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import PaginationItem from '@mui/material/PaginationItem';
+import Rotate    from 'react-reveal/Rotate'; 
+import Fade    from 'react-reveal/Fade'; 
+
+
 const Food = () => {
    
   const navigate = useNavigate()
@@ -34,7 +38,7 @@ const Food = () => {
   const [t, i18n] = useTranslation();
 
   const calories = [
-    20,50,100,150,200,250,300,350,400,500,600,700,900,1000
+    20, 30,40,50, 60,70,80,90,100,150,200,250,300,350,400,500,
   ];
   const [foodFilters, setFoodFilters] = useState({
     search: searchParams.get('search')!= null? searchParams.get('search') :'' ,
@@ -50,7 +54,8 @@ const Food = () => {
   const handleFoodSearch = (event) => {
     
 
-    let newSearchFilter ={...foodFilters , [event.target.name ]:event.target.value} 
+    let newSearchFilter = { ...foodFilters, [event.target.name]: event.target.value  , page:1} 
+    
     setSearchParams(newSearchFilter)
     setFoodFilters(newSearchFilter)
 
@@ -106,10 +111,14 @@ const Food = () => {
   },[searchParams])
   
   return (
-    <Container maxWidth='lg' sx={{ pt:'4px'  ,}}>
+
+  
+         <Container maxWidth='lg' sx={{ pt:'4px'  , minHeight:'88vh' ,}}>
       
 
       {/* search Box */}
+      
+      <Rotate  top left cascade>
       <Paper sx={{ boxShadow:2  , p:'10px' ,} }> 
         
 
@@ -193,13 +202,14 @@ const Food = () => {
 
         
       </Paper>
+      </Rotate>
       {/* search Box */}
 
 
-
+     
       <Paper sx={{minHeight:'88vh' ,}}>
 
-      
+
       
       { foodsChecking === true && foods.length < 1 &&
           <Typography sx={{ textAlign: 'center' }} mt={.5} pt={5}>
@@ -212,9 +222,10 @@ const Food = () => {
                     
                   <CircularProgress />
             </Typography>
-      }
+      } <Fade  bottom >
         <Grid container spacing={5}  mt={.5} px={4} pb={4}  justifyContent='center'>
           
+       
         {foods.map((food, id) =>
             
             <Grid key={food.id} item xs={12} sm={6} md={6} lg={4} >
@@ -268,16 +279,18 @@ const Food = () => {
 
             }
           </Grid>
-
+       
       </Grid>
 
-    
-        
+      </Fade >
+   
  
       </Paper>
 
 
    </Container>
+
+ 
   )
 }
 

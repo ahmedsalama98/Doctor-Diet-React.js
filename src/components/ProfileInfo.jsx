@@ -1,18 +1,15 @@
-import React, { useContext } from 'react'
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
-import Divider from '@mui/material/Divider';
 import { useTranslation } from 'react-i18next';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import CelebrationIcon from '@mui/icons-material/Celebration';
 import TransgenderIcon from '@mui/icons-material/Transgender';
 import { Link  as RouterLink} from 'react-router-dom';
-import Link from '@mui/material/Link';
 import AdjustIcon from '@mui/icons-material/Adjust';
-import { Box, Button, Grid, IconButton, Typography } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 import HeightIcon from '@mui/icons-material/Height';
 export default function ProfileInfo({user}) {
@@ -23,13 +20,13 @@ export default function ProfileInfo({user}) {
   return (
     <>
       {/* front section */}
-        <Box sx={{ m:0, display: 'flex',flexDirection:'column' , alignItems: 'center',bgcolor:'error.main',py:1, justifyContent:'center',}} >
+        <Box sx={{ m:0, display: 'flex',flexDirection:'column' , alignItems: 'center',bgcolor:'success.main',py:1, justifyContent:'center',}} >
         
         
         <Avatar component={RouterLink} to={'/profile/edit-image'} alt={user.name} src={user.avatar_url} sx={{ width: '200px', height: '200px', my: 2 }} />
 
 
-              <Typography variant="h2" fontSize={30} component={'h2'} sx={{ textTransform:'capitalize' }}> {user.name} </Typography>     
+ <Typography variant="h2" fontSize={30} component={'h2'} sx={{ textTransform:'capitalize'  , color:'common.white'}}> {user.name} </Typography>     
         
       
       

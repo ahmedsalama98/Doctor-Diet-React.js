@@ -2,9 +2,7 @@
     "WELCOME": "Welcome",
     "APP_MAIN_PAGES":[      {"pageName":"Home","PageRoute":"/"},
                             {"pageName":"Food","PageRoute":"/food"},
-                            {"pageName":"Meals","PageRoute":"/meals"},
-                            {"pageName":"Contact-Us","PageRoute":"/contact-us"},
-                            {"pageName":"About-Us","PageRoute":"/about-us"}
+                            {"pageName":"Contact-Us","PageRoute":"/contact-us"}
 
                     ],
     "APP_USER_MENU_AUTH":[  {"pageName":"Profile","PageRoute":"/profile/info"},
@@ -146,6 +144,19 @@
     "MORE_THAN_ATT":"More Than {{attribute}} ",
     "SHOW_DETAILS":"Show Details",
     "NOT_FOUND":"Not Found",
+    "JOIN_US":"Join Us",
+    "FOOD_SEARCH":"Food Search",
+    "FOOD_Categories":"Food Categories",
+    "CONTACT_US":"Contact Us",
+    "MESSAGE":"Message",
+    "SUBJECT":"Subject",
+    "MOBILE":"Mobile",
+    "SEND":"Send",
+
+
+
+
+
 
 
 
@@ -212,7 +223,9 @@
         "ADD_NEW_ATTRIBUTE" :"Add New  {{attribute}}",
         "NO_RESULTS_FOUND":"No results found",
         "ERROR_EMPTY_MEAL_ITEMS":"Meal Items Is Required",
-        "ERROR_MEAL_TYPE":"Meal Type Is Required"
+        "ERROR_MEAL_TYPE":"Meal Type Is Required",
+        "WELCOME_AUTH":"Welcome Back {{name}} we wish you have nice day. ",
+        "WELCOME_GUEST":"Hello, we wish you a nice day and help you with what you are looking for ."
     
 
     }

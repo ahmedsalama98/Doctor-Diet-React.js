@@ -122,7 +122,7 @@ export default function EditPassword() {
               autoFocus
               type="password"
           value={formik.values.old_password}
-          onChange={formik.handleChange}
+            onChange={formik.handleChange}
           error={formik.touched.old_password && Boolean(formik.errors.old_password)}
           helperText={formik.touched.old_password && formik.errors.old_password}
         />
@@ -145,7 +145,7 @@ export default function EditPassword() {
           label={t('NEW_PASSWORD')}
           name="new_password"
           autoComplete="new_password"
-              autoFocus
+              
               type="password"
 
           value={formik.values.new_password}
@@ -171,7 +171,7 @@ export default function EditPassword() {
           label={t('NEW_PASSWORD_CONFIRMATION')}
           name="new_password_confirmation"
           autoComplete="new_password_confirmation"
-              autoFocus
+              
               type="password"
 
           value={formik.values.new_password_confirmation}

@@ -4,10 +4,10 @@ import React from 'react'
 export default function Footer() {
   return (
      
-      <Paper sx={{ bgcolor: 'text.primary',py:'10px',borderRadius:0 }}>
+      <Paper sx={{ bgcolor: 'common.black',py:'10px',borderRadius:0 ,color:'common.white' ,textAlign:'center'}}>
            <Container maxWidth='md'>
           
-              footer
+              &copy; 2022
           </Container>
       </Paper>
   )

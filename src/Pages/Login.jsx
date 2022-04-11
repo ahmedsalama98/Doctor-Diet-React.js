@@ -88,8 +88,8 @@ export default function Login() {
   }
   return (
     
-    <Paper sx={{  bgcolor:'primary.main',height:'100vh'}}>
-    <Container component="main" maxWidth="xs" sx={{bgcolor: 'background.paper',height:'80vh' , borderRadius:'0 0 40px 40px' ,}}>
+    <Paper sx={{  height:'100vh'}}>
+    <Container component="main" maxWidth="xs" sx={{boxShadow:5, bgcolor: 'background.paper',height:'80vh' , borderRadius:'0 0 40px 40px' ,}}>
       <CssBaseline />
       <Box
         sx={{

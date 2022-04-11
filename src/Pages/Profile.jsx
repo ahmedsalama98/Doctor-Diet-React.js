@@ -16,6 +16,11 @@ import EditPassword from '../components/EditPassword';
 import EditUserImage from '../components/EditUserImage';
 import UserWeightHistory from '../components/UserWeightHistory'
 import UserMeals from '../components/UserMeals';
+import Fade from 'react-reveal/Fade';
+import Slide from 'react-reveal/Slide';
+import Bounce from 'react-reveal/Bounce';
+import Roll from 'react-reveal/Roll';
+
 export default function Profile() {
   const allowsParams = ['info', 'edit-info','daily-meals','edit-password','edit-image','weight'];
   const params = useParams()
@@ -44,7 +49,7 @@ export default function Profile() {
 
 
   return (
-    <Paper sx={{ width: '100%', bgcolor: 'primary.main' }}>
+    <Paper sx={{ width: '100%', bgcolor: 'inherit' }}>
       
     <Container >
 
@@ -70,38 +75,62 @@ export default function Profile() {
               
 
 </Tabs>
-  </Box>
+          </Box>
+          
+      
+
         
-          <Paper sx={{ bgcolor: 'background.paper', m: 0, p: 0, borderRadius: '0', minHeight:'84vh' }}>
+        
+          <Paper sx={{ bgcolor: 'background.paper', m: 0, p: 0, borderRadius: '0', minHeight:'84vh' ,overflow:'hidden'}}>
             
-          <TabPanel value={'info'} sx={{ padding:0 }}>
-            <ProfileInfo user ={USER} />
+            <TabPanel value={'info'} sx={{ padding: 0 }}>
+            <Fade bottom big >
+              <ProfileInfo user={USER} />
+              </Fade >
           </TabPanel>
-          <TabPanel value={'edit-info'}  sx={{ padding:0  }}>
-            <EditInf />
+            <TabPanel value={'edit-info'} sx={{ padding: 0 }}>
+              <Roll top >
+                 <EditInf />
+              </Roll>
+           
 
           </TabPanel>
 
-          <TabPanel value={'edit-image'} sx={{ padding: 0 }}>
-            <EditUserImage />
+            <TabPanel value={'edit-image'} sx={{ padding: 0 }}>
+              
+              <Bounce>
+                     <EditUserImage />
+              </Bounce>
+       
           </TabPanel>
 
-          <TabPanel value={'edit-password'} sx={{ padding: 0 }}>
-            <EditPassword />
+            <TabPanel value={'edit-password'} sx={{ padding: 0 }}>
+              
+              <Roll bottom>
+                  <EditPassword />
+              </Roll>
+          
             </TabPanel>
             
 
             <TabPanel value={'weight'} sx={{ padding: 0 }}>
      
+            <Slide left >
+            <UserWeightHistory />
+              </Slide>
 
-              <UserWeightHistory />
+             
             </TabPanel>
 
             <TabPanel value={'daily-meals'}>
+
+            <Slide right >
             <UserMeals USER ={USER} />
+              </Slide>
+       
             </TabPanel>
         </Paper>
-          
+       
 </TabContext>
         
 

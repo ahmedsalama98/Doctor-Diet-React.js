@@ -24,7 +24,6 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { toast } from 'react-toastify';
-import { object } from 'yup';
 export default function UserMeals(props) {
     const [openAddMeal, setOpenAddMeal] = useState(false);
     const [t, i18n] = useTranslation();
@@ -97,7 +96,6 @@ const handleOpenDeleteMeal = (id) => {
     try {
       let  { data } = await getUserMeals();
       setLastMonthMeals({ ...data.data.meals })
-      console.log(data.data.meals )
 
      
     }catch (error) {

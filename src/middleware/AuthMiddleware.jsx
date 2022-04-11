@@ -9,7 +9,9 @@ const AuthMiddleware = ({children}) => {
     const { AppAuth  } = useContext(AppAuthContext);
     
     if (AppAuth.Auth === false) {
-        return <Navigate to={'/login'} replace={true }/>
+       
+        return <Navigate to={'/login'} />
+        
     }
     return children;
   
