@@ -19,7 +19,7 @@ export default function HomeLanding() {
 
     navigate(route);
   }
-  
+
   
 
   return (
@@ -27,7 +27,7 @@ export default function HomeLanding() {
                       <Box sx={{ 
                         background:`url(./images/slider/1.jpg) fixed center center`,
                         backgroundSize:'cover',
-                        height:'90vh',
+                        minHeight:'90vh',
                         position:'relative',
                         overflow:'hidden'
                

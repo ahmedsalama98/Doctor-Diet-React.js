@@ -1,6 +1,5 @@
 import React , {useContext, useEffect} from 'react';
 import Paper from '@mui/material/Paper';
-import { useSelector } from 'react-redux'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Routes, Route, Link } from "react-router-dom";
 import Home from './Pages/Home';
@@ -8,7 +7,6 @@ import './App.css';
 import Header from './components/Header';
 import { AppSettingsContext } from './AppSettingsContext';
 import Food from './Pages/Food';
-import { AuthTokenInterceptor } from './services/TokenServices';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Login from './Pages/Login';
@@ -26,10 +24,7 @@ import ContactUs from './Pages/ContactUs';
 
 function App() {
 
-
-
-
-
+  
   const { AppSettings } = useContext(AppSettingsContext);
   const left = AppSettings.lang === 'en' ? 'left' : 'right';
   const right = AppSettings.lang === 'en' ? 'right' : 'left';
@@ -67,7 +62,6 @@ console.log(theme)
           <Route path="/signup" element={ <GuestMiddleware> <SignUp /> </GuestMiddleware>} />
           <Route path="/contact-us" element={<ContactUs />} />
 
-          
           <Route path="/profile/" element={<AuthMiddleware><Profile /></AuthMiddleware>} />
 
           <Route path="/profile/:action/" element={ <AuthMiddleware><Profile /></AuthMiddleware>} />

@@ -1,23 +1,64 @@
 import { Container, Grid, Paper, Alert, Link, Divider ,Button } from '@mui/material';
-import React ,{useState} from 'react'
+import React ,{useState ,useEffect ,useContext} from 'react'
 import HomeLanding from '../components/HomeLanding';
 import { useTranslation } from 'react-i18next';
 import { getFoodCategories } from '../services/FoodServices';
-import { useEffect } from 'react';
 import { Box } from '@mui/material';
 import { Avatar } from '@mui/material';
 import { Typography } from '@mui/material';
 import { Link as RouteLink } from 'react-router-dom';
 import Fade from 'react-reveal/Fade';
 import Spin from 'react-reveal/Spin';
-import TransitionGroup from 'react-transition-group/TransitionGroup';
-
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+import { AppSettingsContext } from '../AppSettingsContext';
 
 
 
 export default function Home() {
   const [t] = useTranslation();
   const [foodCategories, setFoodCategories] = useState([]);
+  const { AppSettings } = useContext(AppSettingsContext);
+
+  const slider_settings = {
+    rtl: AppSettings.lang === 'ar' ? true :false ,
+    arrows:false,
+    dots: true,
+    infinite: true,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    speed: 2000,
+    autoplaySpeed: 2000,
+    // cssEase: "linear",
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
+  };
 
   
   const getCategoriesFood = async () => {
@@ -55,53 +96,49 @@ export default function Home() {
           <Typography component={'h2'} variant="h5" mb={5} textAlign="center"> 
              {t('FOOD_Categories')}
            </Typography>
-           <TransitionGroup>
-       <Grid container spacing={1} >
+ 
   
 
               
  
-        { foodCategories.map((category ,id)=>
+<Slider {...slider_settings}>
+{ foodCategories.map((category ,id)=>
 
-      
-       <Grid key={id} item xs={6} sm={6} md={4}> 
+<div key={id}>
+<Box component={'div'} sx={{ display:'flex' , flexDirection:'column' ,justifyContent:'center', alignItems:'center', my:2 }}>
      
-       <Fade bottom>
- <RouteLink style={{   textDecoration:'none'}} to={'/food?category_id=' + category.id} >
+    <Spin>
+    <Avatar sx={{ width:'150px',height:'150px' }} alt ={category.name}  src={category.file_url}/>
+    </Spin>
 
-         <Box sx={{ display:'flex' , flexDirection:'column' ,justifyContent:'center', alignItems:'center', my:2 }}>
-            
-            <Spin>
-               <Avatar sx={{ width:'150px',height:'150px' }} alt ={category.name}  src={category.file_url}/>
-            </Spin>
-             
-             
-                <Typography component={Link} variant="p" underline="hover" my={1}> 
-                {category.name}
-                </Typography>
-          
-         </Box>
-         </RouteLink> 
-            </Fade>    
-      </Grid>
-      
-        )
+   
+   
+
+
+      <Link  to={'/food?category_id=' + category.id} component={RouteLink} underline="hover" m={'auto'} my={4} >{category.name}</Link>
+
+</Box>
+</div>
 
 
 
-        }
+ )
+
+
+
+ }
+</Slider>
           
 
 
-        </Grid>
-        </TransitionGroup>
-
-        <Divider />
 
 
-             <Fade left>
+
+
+            <Fade left>
           <Box py={5} mt={5} textAlign='center'>
-              <Button variant='contained' to='/contact-us' component={RouteLink} > {t('CONTACT_US')} </Button>
+            
+              <Button  variant='contained' to='/contact-us' component={RouteLink} > {t('CONTACT_US')} </Button>
           </Box>
           </Fade>
           </Paper>

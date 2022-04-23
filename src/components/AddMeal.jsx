@@ -5,7 +5,6 @@ import Dialog from '@mui/material/Dialog';
 import ListItemText from '@mui/material/ListItemText';
 import ListItem from '@mui/material/ListItem';
 import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
@@ -45,7 +44,7 @@ export default function AddMeal(props) {
     const openAddMeal = props.openAddMeal;
     const setOpenAddMeal = props.setOpenAddMeal;
 
-    const [t, i18n] = useTranslation();
+    const [t] = useTranslation();
     const [openSearchMenu, setOpenSearchMenu] = useState(false);
     const [searchItems, setSearchItems] = useState([]);
     const [searchChecking, setSearchChecking] = useState(null);

@@ -20,9 +20,10 @@ import Fade from 'react-reveal/Fade';
 import Slide from 'react-reveal/Slide';
 import Bounce from 'react-reveal/Bounce';
 import Roll from 'react-reveal/Roll';
+import UserStatistics from '../components/UserStatistics';
 
 export default function Profile() {
-  const allowsParams = ['info', 'edit-info','daily-meals','edit-password','edit-image','weight'];
+  const allowsParams = ['info', 'edit-info','daily-meals','edit-password','edit-image','weight' , 'statistics'];
   const params = useParams()
   const checkActiveParam = () => {
     return allowsParams.some(param => param === params.action) ? params.action : 'info';
@@ -67,11 +68,13 @@ export default function Profile() {
               <Tab label={t('INFORMATION')} value={'info'} />
               <Tab label={t('DAILY_MEALS')} value={'daily-meals'} />
               <Tab label={t('YOUR_WEIGHT')} value={'weight'} />
+              <Tab label={t('STATISTICS')} value={'statistics'} />
               <Tab label={t('EDIT_INFORMATION')} value={'edit-info'} />
               <Tab label={t('CHANGE_IMAGE')}  value={'edit-image'} />
               <Tab label={t('CHANGE_PASSWORD')} value={'edit-password'} />
 
 
+              
               
 
 </Tabs>
@@ -88,6 +91,16 @@ export default function Profile() {
               <ProfileInfo user={USER} />
               </Fade >
           </TabPanel>
+
+          
+          <TabPanel value={'statistics'} sx={{ padding: 0 }}>
+              
+              <Bounce>
+                     <UserStatistics />
+              </Bounce>
+            </TabPanel>
+
+
             <TabPanel value={'edit-info'} sx={{ padding: 0 }}>
               <Roll top >
                  <EditInf />
